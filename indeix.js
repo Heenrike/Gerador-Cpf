@@ -48,7 +48,7 @@ gerar.addEventListener("click", () => {
   const cpfGerado = NumbArray.join("");
   const inputField = document.querySelector(".input");
 
-  const cpf= new Cpf(String(cpfGerado))
+  const cpf = new Cpf(String(cpfGerado));
   inputField.value = cpf.validar();
   console.log(cpfGerado);
 });
