@@ -84,3 +84,9 @@ input {
       height: 35px
     };
 }
+.errodo{
+box-shadow:0 0 20px red;
+}
+.acerto{
+box-shadow: 0 0 20px rgb(0, 255, 34);
+}
