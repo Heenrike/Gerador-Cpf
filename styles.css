@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-  height: 250px;
+  height: 350px;
   width: 500px;
   box-shadow: 0px 0px 10px #ccc;
   text-align: center;
@@ -28,12 +28,13 @@ body {
 
 .tilte {
   text-align: center;
+  width: 10px;
 }
 input {
   margin: 20px;
-  width: calc(100% - 40px); /* Considerando 10px de margem em cada lado */
-  box-sizing: border-box; /* Para incluir a margem na largura total */
-  text-align: center; /* Centralizar o texto dentro do input */
+  width: calc(100% - 40px);
+  box-sizing: border-box; 
+  text-align: center; 
   padding: 5px;
 }
 .btn button {
@@ -44,4 +45,20 @@ input {
 }
 .btn button:hover {
   background-color: #ccc;
+}
+#checkbox{
+  margin: 0px;
+  padding: 0px;
+}
+
+.box{
+  display: flex;
+  padding: 0;
+  margin: 0;
+  flex-direction: row-reverse;
+  gap: 6px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
