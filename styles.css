@@ -8,6 +8,7 @@ body {
 
   height: 100vh;
   width: 100vw;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,6 +37,7 @@ input {
   box-sizing: border-box; 
   text-align: center; 
   padding: 5px;
+  font-size: 25px;
 }
 .btn button {
   border: 1px solid #4e4e4efa;
@@ -61,4 +63,24 @@ input {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+}
+@media(max-width:668px){
+  .container{
+    height: 300px;
+    width: 400px;
+  }
+
+}
+@media(max-width:468px){
+  .container{
+    height: 350px;
+    width: 340px;
+  }
+
+    .btn button{
+      padding: 5px  30px;
+    }
+    input{
+      height: 35px
+    };
 }
