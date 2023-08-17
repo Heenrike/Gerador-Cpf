@@ -10,9 +10,7 @@ class Cpf {
     if (
       typeof this.cpfLimpo === "undefined" ||
       this.cpfLimpo.length !== 11 ||
-      this.isRepeat() ||
-      !this.cpfLimpo.match(/^\d+$/)
-    )
+      this.isRepeat()  )
       return false;
 
     let cpfArray = Array.from(this.cpfLimpo);
@@ -45,16 +43,18 @@ class Cpf {
 
 const validar = document.querySelector(".validar");
 validar.addEventListener("click", () => {
-  const input = document.querySelector(".input").value.replace(/\D/g, "");
+  const input = document.querySelector(".input").value.replace(/[^a-zA-Z0-9]/g, '');
   const cpf = new Cpf(input);
   console.log(cpf.validar() === input);
-
-  if (cpf.validar() === input) {
-    cont.classList.add("acerto");
-  } else {
-    cont.classList.add("errodo");
+  if (input !== "" && input !== undefined) {
+    if (cpf.validar() === input) {
+      cont.classList.add("acerto");
+    } else {
+      cont.classList.add("errodo");
+    }
+    console.log(input);
   }
-  setTimeout(function() {
+  setTimeout(function () {
     cont.classList.remove("acerto");
     cont.classList.remove("errodo");
   }, 1000);
@@ -79,7 +79,10 @@ gerar.addEventListener("click", () => {
 
     let valorCpf = cpf.validar();
     if (checkbox.checked) {
-      valorCpf = valorCpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4");
+      valorCpf = valorCpf.replace(
+        /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
+        "$1.$2.$3-$4"
+      );
     }
 
     inputField.value = valorCpf;
