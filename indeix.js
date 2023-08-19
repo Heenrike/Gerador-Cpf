@@ -10,7 +10,8 @@ class Cpf {
     if (
       typeof this.cpfLimpo === "undefined" ||
       this.cpfLimpo.length !== 11 ||
-      this.isRepeat()  )
+      this.isRepeat()
+    )
       return false;
 
     let cpfArray = Array.from(this.cpfLimpo);
@@ -43,7 +44,7 @@ class Cpf {
 
 const validar = document.querySelector(".validar");
 validar.addEventListener("click", () => {
-  const input = document.querySelector(".input").value.replace(/[^a-zA-Z0-9]/g, '');
+  const input = document.querySelector(".input").value.replace(/[^a-zA-Z0-9 ]/g, "").replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/,"$1$2$3$4")
   const cpf = new Cpf(input);
   console.log(cpf.validar() === input);
   if (input !== "" && input !== undefined) {
@@ -65,30 +66,24 @@ gerar.addEventListener("click", () => {
   const inputField = document.querySelector(".input");
   const checkbox = document.querySelector("#checkbox");
   let NumbArray = [];
+  for (let contador = 0; contador < 11; contador++) {
+    NumbArray.push(gerarNumeroAleatorio(0, 9).toFixed(0));
+  }
 
-  do {
-    NumbArray = [];
-    for (let contador = 0; contador < 11; contador++) {
-      NumbArray.push(gerarNumeroAleatorio(0, 9).toFixed(0));
-    }
-    const cpfGerado = NumbArray.join("");
-    const cpf = new Cpf(String(cpfGerado));
-    if (!cpf.validar()) {
-      continue;
-    }
+  console.log(NumbArray);
+  const cpfGerado = NumbArray.join("");
+  const cpf = new Cpf(String(cpfGerado));
 
-    let valorCpf = cpf.validar();
-    if (checkbox.checked) {
-      valorCpf = valorCpf.replace(
-        /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
-        "$1.$2.$3-$4"
-      );
-    }
+  let valorCpf = cpf.validar();
+  if (checkbox.checked) {
+    valorCpf = valorCpf.replace(
+      /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
+      "$1.$2.$3-$4"
+    );
+  }
 
-    inputField.value = valorCpf;
-    console.log(cpfGerado);
-    break;
-  } while (true);
+  inputField.value = valorCpf;
+  console.log(cpfGerado);
 });
 
 function gerarNumeroAleatorio(min, max) {
